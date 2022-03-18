@@ -1,0 +1,318 @@
+.main-content {
+  background-color: #0B4F6C;
+}
+
+#quote > #author {
+  display: flex;
+  justify-content: center;
+}
+
+.quoteContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 50px;
+  width: 80%;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+
+#quote {
+  font-family: "Bradley Hand ITC";
+  text-align: center;
+  font-size: 20px;
+}
+
+#author {
+  margin-top: 10px;
+  font-family: "Bradley Hand ITC";
+  font-size: 35px;
+}
+
+#jumbotron {
+  background: url(https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg) center center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 30px;
+}
+
+#jumbotron > h2 {
+  color: white;
+  text-align: center;
+}
+
+#jumbotron > a {
+  text-decoration: none;
+  background-color: white;
+  font-size: 1.5em;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+body {
+    font-family:'Roboto', sans-serif;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+
+/* header > a {
+  text-decoration: none;
+  background-color: #B0123c;
+  font-size: 2.em;
+  padding: 1.5rem;
+  border-radius: 50px;
+  color: white;
+}
+
+header > a:hover {
+  background-color: black;
+} */
+
+@media (max-width: 549px){
+  .hidden--mobile {
+    display: none !important;
+  }
+
+/* header {
+  height:50vh;
+} */
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+nav > i {
+  padding: 1rem;
+  font-size: 2em;
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 0;
+}
+
+nav > ul > li {
+  padding: .5rem;
+  list-style-type: none;
+ }
+
+ /* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  width: 100%;
+}
+
+ #first-list {
+  width: auto;
+  border-width: 5px 10px 5px 8px;
+  border-color: #496DDB;
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #FCA311;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+
+#first-list > li {
+  color: #B0123c;
+  font-weight: bold;
+}
+
+.my-second-list {
+  width: auto;
+  border-width: 5px 10px 5px 8px;
+  border-color: #496DDB;
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 100px;
+  background-color: #B0123c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-weight:bold;
+}
+
+}
+
+@media (min-width: 550px){
+  /* header {
+    height: 60vh;
+  } */
+
+
+  nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 0;
+  }
+
+  nav > ul > li {
+    display:inline;
+    text-decoration:black;
+    border: 2px solid;
+    padding: .5rem .5rem;
+    border-radius: 20px;
+  }
+
+
+  nav > ul > li {
+    position: relative;
+    display: inline;
+    padding: 5px 10px;
+    border: 2px solid #B0123c;
+    color: #B0123c;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: linear-gradient(#B0123c, #B0123c);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size .5s, color .5s;
+    background-color: chartreuse;
+  }
+
+  nav > ul > li:hover {
+    background-size: 100% 100%;
+    color: #fff;
+  }
+
+  nav > .fa-ellipsis-h {
+    display: none;
+  }
+}
+
+#first-list {
+  width: auto;
+  border-width: 5px 10px 5px 8px;
+  border-color: #496DDB;
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 100px;
+  background-color: #FCA311;
+  background-position:center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+
+#first-list > li {
+  color: #B0123c;
+  font-weight: bold;
+}
+
+.my-second-list {
+  width: auto;
+  border-width: 5px 10px 5px 8px;
+  border-color: #496DDB;
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 100px;
+  background-color: #B0123c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-weight:bold;
+}
+
+* p {
+padding-left: 10px;
+
+}
+
+h1 {
+  color: #B0123c;
+  text-align:center;
+}
+
+h2 {
+  margin-left: 20px;
+  color:#FCA311
+}
+
+
+footer {
+  background-color: #B0123c;
+}
+
+html {
+  background-color: #496DDB;
+}
+
+img {
+  display: block;
+  border: solid;
+  border-color:#FCA311;
+  border-width:.2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.formcontainer {
+  width: 50%;
+  border-width: 5px 10px 5px 8px;
+  border-color: #496DDB;
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #B0123c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-weight:bold;
+}
+
+/* .row{clear:both} */
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* .column{
+    width: 50%;
+    float:left;
+} */
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
