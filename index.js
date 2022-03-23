@@ -3,9 +3,10 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
+
 import dotenv from "dotenv";
 
-// dotenv.config();
+dotenv.config();
 
 const router = new Navigo("/");
 
@@ -67,11 +68,31 @@ function addEventListeners(st) {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        buttonText: {
+          today:    'Today',
+          month:    'Month',
+          week:     'Week',
+          day:      'Day',
+          list:     'List'
+        },
+        height: '100%',
+        dayMaxEventRows: true,
+        eventClick: function(info) {
+          console.log('Event: ', info.event);
+  
+          // change the border color just for fun
+          info.el.style.borderColor = 'red';
+        },
         events: st.appointments || []
       });
       calendar.render();
     }
-  }
+}
 
     //Adding Calendar Feature 
 //     document.addEventListener('DOMContentLoaded', function() {
@@ -105,7 +126,15 @@ function addEventListeners(st) {
 //Add Router Hooks
 router.hooks({
   before: (done, params) => {
-    const page = params && params.data && params.data.page ? capitalize(params.data.page) : "Home";
+    let page = "Home";
+    let id = "";
+    if (params && params.data) {
+      page = params.data.page ? capitalize(params.data.page) : "Home";
+      id = params.data.id ? params.data.id : "";
+    }
+
+    console.log('this-printed-page:', page);
+    console.log('fancy-id:', id);
 
     if (page === "Home") {
       axios
@@ -130,16 +159,34 @@ router.hooks({
               id: event._id,
               title: event.customer,
               start: new Date(event.start),
-              end: new Date(event.end)
+              end: new Date(event.end),
+              url: `/appointment/${event._id}`
             };
           });
           state.Appointments.appointments = events;
-          console.log('something-state.Appointments.appointments:', state.Appointments.appointments);
           done();
         })
         .catch((error) => {
           console.log("It puked", error);
         });
+    } else if (page === "Appointment") {
+      axios
+      .get(`${process.env.API_URL}/appointments/${id}`)
+      .then((response) => {
+        state.Appointment.event = {
+          id: response.data._id,
+          title: response.data.customer,
+          start: new Date(response.data.start),
+          end: new Date(response.data.end),
+          url: `/appointment/${response.data._id}`
+        };
+        console.log('bleh.state.Appointment.appointment:', state.Appointment.appointment);
+        done();
+      })
+      .catch((error) => {
+        console.log("It puked", error);
+        done();
+      });
     } else {
       done();
     }
@@ -150,6 +197,12 @@ router
   .on({
     "/": () => render(state.Home),
     ":page": params => {
+      console.log(":page route was hit");
+      let page = capitalize(params.data.page);
+      render(state[page]);
+    },
+    ":page/:id": (params) => {
+      console.log(":page/:id route was hit");
       let page = capitalize(params.data.page);
       render(state[page]);
     }

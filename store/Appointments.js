@@ -1,5 +1,5 @@
 export default {
-  header: "Appointments Calendar",
+  header: "Appointments",
   view: "Appointments",
   appointments: [],
 };

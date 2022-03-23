@@ -529,7 +529,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _dotenv = require("dotenv");
 var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
-// dotenv.config();
+_dotenvDefault.default.config();
 const router = new _navigoDefault.default("/");
 function render(st) {
     document.querySelector("#root").innerHTML = `
@@ -571,6 +571,25 @@ function addEventListeners(st) {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            buttonText: {
+                today: 'Today',
+                month: 'Month',
+                week: 'Week',
+                day: 'Day',
+                list: 'List'
+            },
+            height: '100%',
+            dayMaxEventRows: true,
+            eventClick: function(info) {
+                console.log('Event: ', info.event);
+                // change the border color just for fun
+                info.el.style.borderColor = 'red';
+            },
             events: st.appointments || []
         });
         calendar.render();
@@ -602,7 +621,14 @@ function addEventListeners(st) {
 //Add Router Hooks
 router.hooks({
     before: (done, params)=>{
-        const page = params && params.data && params.data.page ? _lodash.capitalize(params.data.page) : "Home";
+        let page = "Home";
+        let id = "";
+        if (params && params.data) {
+            page = params.data.page ? _lodash.capitalize(params.data.page) : "Home";
+            id = params.data.id ? params.data.id : "";
+        }
+        console.log('this-printed-page:', page);
+        console.log('fancy-id:', id);
         if (page === "Home") _axiosDefault.default.get(`https://api.openweathermap.org/data/2.5/weather?q=st.%20louis&appid=${"216f41c43e50e1b7547cefc7d81d58ad"}`).then((response)=>{
             _store.Home.weather = {
             };
@@ -619,14 +645,28 @@ router.hooks({
                     id: event._id,
                     title: event.customer,
                     start: new Date(event.start),
-                    end: new Date(event.end)
+                    end: new Date(event.end),
+                    url: `/appointment/${event._id}`
                 };
             });
             _store.Appointments.appointments = events;
-            console.log('something-state.Appointments.appointments:', _store.Appointments.appointments);
             done();
         }).catch((error)=>{
             console.log("It puked", error);
+        });
+        else if (page === "Appointment") _axiosDefault.default.get(`${"http://localhost:4040"}/appointments/${id}`).then((response)=>{
+            _store.Appointment.event = {
+                id: response.data._id,
+                title: response.data.customer,
+                start: new Date(response.data.start),
+                end: new Date(response.data.end),
+                url: `/appointment/${response.data._id}`
+            };
+            console.log('bleh.state.Appointment.appointment:', _store.Appointment.appointment);
+            done();
+        }).catch((error)=>{
+            console.log("It puked", error);
+            done();
         });
         else done();
     }
@@ -635,6 +675,12 @@ router.on({
     "/": ()=>render(_store.Home)
     ,
     ":page": (params)=>{
+        console.log(":page route was hit");
+        let page = _lodash.capitalize(params.data.page);
+        render(_store[page]);
+    },
+    ":page/:id": (params)=>{
+        console.log(":page/:id route was hit");
         let page = _lodash.capitalize(params.data.page);
         render(_store[page]);
     }
@@ -1196,6 +1242,8 @@ parcelHelpers.export(exports, "Schedule", ()=>_scheduleDefault.default
 );
 parcelHelpers.export(exports, "Appointments", ()=>_appointmentsDefault.default
 );
+parcelHelpers.export(exports, "Appointment", ()=>_appointmentDefault.default
+);
 parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
 parcelHelpers.export(exports, "Stylists", ()=>_stylistsDefault.default
@@ -1208,12 +1256,14 @@ var _schedule = require("./Schedule");
 var _scheduleDefault = parcelHelpers.interopDefault(_schedule);
 var _appointments = require("./Appointments");
 var _appointmentsDefault = parcelHelpers.interopDefault(_appointments);
+var _appointment = require("./Appointment");
+var _appointmentDefault = parcelHelpers.interopDefault(_appointment);
 var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"60R7n","./Links":"jDBjl","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"8RBT4","./Schedule":"cEzTn"}],"60R7n":[function(require,module,exports) {
+},{"./Home":"60R7n","./Links":"jDBjl","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"8RBT4","./Schedule":"cEzTn","./Appointment":"aEKI8"}],"60R7n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -1270,7 +1320,7 @@ exports.default = {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
-    header: "Appointments Calendar",
+    header: "Appointments",
     view: "Appointments",
     appointments: []
 };
@@ -1281,6 +1331,16 @@ parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     header: "Schedule An Appointment",
     view: "Schedule"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aEKI8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Appointment",
+    view: "Appointment",
+    event: {
+    }
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuSlc":[function(require,module,exports) {
