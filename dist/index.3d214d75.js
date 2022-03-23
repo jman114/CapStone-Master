@@ -574,6 +574,40 @@ function addEventListeners() {
         calendar.render();
     });
 }
+//Add Router Hook For Services Accordion
+// router.hooks({
+//   before: (done, params) => {
+//     const page =
+//       params && params.data && params.data.page
+//         ? capitalize(params.data.page)
+//         : "Services";
+// if (page === "Services") {
+//   const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
+// accordionItemHeaders.forEach(accordionItemHeader => {
+//   accordionItemHeader.addEventListener("click", event => {
+//     accordionItemHeader.classList.toggle("active");
+//     const accordionItemBody = accordionItemHeader.nextElementSibling;
+//     if(accordionItemHeader.classList.contains("active")) {
+//       accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+//     }
+//     else {
+//       accordionItemBody.style.maxHeight = 0;
+//     }
+//   });
+// })
+//     .then(response => {
+//       console.log(response.data);
+//       state.Service.services = response.data;
+//       done();
+//     })
+//     .catch(error => {
+//       console.log("It puked", error);
+//     });
+// } else {
+//   done();
+// }
+//   }
+// });
 // ADD ROUTER HOOKS - Example for when I implement my API
 router.hooks({
     before: (done, params)=>{
@@ -904,7 +938,37 @@ exports.default = (st)=>_htmlLiteralDefault.default`
     <h2>Click Below To Book An Appointment</h2>
     <a href="./Book">Book Now</a>
   </section>
-  <section id="home">
+  <center><h2>How In A Snip Works</h2></center>
+<div class="row">
+  <div class="column">
+    <div class="column-header">
+      <center><h3>Book</h3></center>
+    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" style="width:90% height:80%">
+     <div class="colum-content"> 
+       <p>Select the time and date you'd like your barber to arrive.</p>
+     </div>
+   </div>
+</div>
+  <div class="column">
+  <div class="column-header">
+      <center><h3>Groom</h3></center>
+    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" style="width:90% height:80%">
+    <div class="colum-content"> 
+       <p>A licensed barber travels to your location and cuts your hair.</p>
+       </div>
+     </div>
+</div>
+  <div class="column">
+  <div class="column-header">
+      <center><h3>Relax</h3></center>
+    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648059788~hmac=da7162af52d6616027423690eac425f6" alt="Relaxing Getting A Hair Cut" style="width:90% height:80%">
+    <div class="colum-content"> 
+       <p>Sit back and relax! Professional service in your home, on your time.</p>
+      </div>
+    </div>
+   </div> 
+</div>
+  <!-- <section id="home">
     <content class="responsive flex">
       <div class="main-content">
         <br />
@@ -952,20 +1016,8 @@ exports.default = (st)=>_htmlLiteralDefault.default`
             <h2>Column 3</h2>
             <p>Some text..</p>
           </div>
-        </div>
-        <p>
-          You can see my
-          <a
-            href="https://matchboxdesigngroup.com/team-member/james-mcminn-senior-digital-strategist/"
-            >profile</a
-          >
-          at
-          <a href="https://matchboxdesigngroup.com">Matchbox Design Group</a>.
-        </p>
-        <img
-          src="https://matchboxdesigngroup.com/app/uploads/2021/06/James-McMinn-personality-pic-3.jpg"
-          alt="Image"
-        /><br /><br />
+        </div> -->
+        <br /><br />
       </div>
     </content>
   </section>
@@ -1100,41 +1152,61 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-fetch("https://quotes15.p.rapidapi.com/quotes/random/?language_code=en", {
-    method: "GET",
-    headers: {
-        "x-rapidapi-host": "quotes15.p.rapidapi.com",
-        "x-rapidapi-key": '3fd25e5b47mshe37d9ddea1b4a88p1bb5fbjsnbe96a527108f'
-    }
-}).then((response)=>response.json()
-).then((response)=>{
-    console.log(response);
-    document.getElementById("quote").innerHTML = response.content;
-    document.getElementById("author").innerHTML = "- " + response.originator.name + " -";
-}).catch((err)=>{
-    console.log(err);
-});
 exports.default = (st)=>_htmlLiteralDefault.default`
     <section id="jumbotron">
       <h2>Click Below To Book An Appointment</h2>
       <a href="./Book">Book Now</a>
     </section>
-    <h2>This Is A Random Quote Generator Using An API Call - Just Refresh</h2>
-    <div class="quoteContainer">
-      <div id="quote"></div>
-      <div id="author"></div>
+    <h1>Services</h1>
+  
+<div class="accordion">
+  <div>
+    <input type="checkbox" name="example_accordion" id="section1" class="accordion__input">
+    <label for="section1" class="accordion__label">Signature Haircut</label>
+    <div class="accordion__content">
+      <p>In A Snip Barbers Signature Haircut $80</p>
+      <p>
+      In A Snip Barbers signature haircut presented in the location of your choosing, featuring scissors 
+      & clippers paired with a straight razor shave around your exterior edges. Service includes 100% green/organic 
+      products. 
+      </p>
     </div>
-    <!-- <table id="services">
-      <tr>
-        <th>Men's Hair Cut</th>
-        <th>Women's Hair Cut</th>
-        <th>Men's Shave</th>
-        <th>Coloring</th>
-      </tr> -->
-    <!-- Using as an example for when I implement my API ${st.services.map((services)=>{
-        return `<tr><td>${services.crust}</td><td>${services.cheese}</td><td>${services.sauce}</td><td>${services.toppings.join(" & ")}</td><td>${services.customer}</td></tr>`;
-    }).join("")} -->
-    <!-- </table> -->
+  </div>
+  <div>
+    <input type="checkbox" name="example_accordion" id="section2" class="accordion__input">
+    <label for="section2" class="accordion__label">Beard Trim</label>
+    <div class="accordion__content">
+      <p>Beard Trim $45</p>
+      <p>
+      Leave your beard sculpting to the professionals. Doorbell Barbers will analyze your beard growth, face 
+      shape and hair texture to create a flawless looking beard. We will use a combination of clippers and scissors 
+      along with beard oil, beard balm and witch hazel to achieve your beard goals in the comfort of your home. 
+      </p>
+    </div>
+  </div>
+  <div>
+    <input type="checkbox" name="example_accordion" id="section3" class="accordion__input">
+    <label for="section3" class="accordion__label">Safety Razor Shave</label>
+    <div class="accordion__content">
+      <p>Safety Razor Shave $45</p>
+      <p>
+      A service designed to offer a quick and efficient shave using a safety razor & electric shaver to get your face 
+      looking "BBS" (Baby Bottom Smooth). (Best for Seniors)
+      </p>
+    </div>
+  </div>
+  <div>
+    <input type="checkbox" name="example_accordion" id="section4" class="accordion__input">
+    <label for="section3" class="accordion__label">Doorbell Barbers MANicure & Pedicure</label>
+    <div class="accordion__content">
+      <p>Doorbell Barbers MANicure & Pedicure $180</p>
+      <p>
+      Hands say a lot about a man. With a polish free buff, clip, and file our MANicure & Pedicure 
+      adds the finishing touch to a well groomed man.  (90 minutes)
+      </p>
+    </div>
+  </div>
+</div>
   `
 ;
 
@@ -1210,21 +1282,21 @@ exports.default = [
         text: "Home"
     },
     {
-        title: "Book",
-        text: "Book Now"
-    },
-    {
-        title: "About",
-        text: "About"
-    },
-    {
         title: "Services",
         text: "Services"
     },
     {
         title: "Stylists",
         text: "Stylists"
-    }
+    },
+    {
+        title: "Book",
+        text: "Book Now"
+    },
+    {
+        title: "About",
+        text: "About"
+    }, 
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3OUOl":[function(require,module,exports) {
@@ -1248,8 +1320,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     header: "Services",
-    view: "Services",
-    services: []
+    view: "Services"
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8LZ1O":[function(require,module,exports) {

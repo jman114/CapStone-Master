@@ -62,6 +62,43 @@ function addEventListeners() {
     }); 
 }
 
+//Add Router Hook For Services Accordion
+// router.hooks({
+//   before: (done, params) => {
+//     const page =
+//       params && params.data && params.data.page
+//         ? capitalize(params.data.page)
+//         : "Services";
+// if (page === "Services") {
+//   const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
+// accordionItemHeaders.forEach(accordionItemHeader => {
+//   accordionItemHeader.addEventListener("click", event => {
+//     accordionItemHeader.classList.toggle("active");
+//     const accordionItemBody = accordionItemHeader.nextElementSibling;
+//     if(accordionItemHeader.classList.contains("active")) {
+//       accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+//     }
+//     else {
+//       accordionItemBody.style.maxHeight = 0;
+//     }
+    
+//   });
+// })
+ 
+//     .then(response => {
+//       console.log(response.data);
+//       state.Service.services = response.data;
+//       done();
+//     })
+//     .catch(error => {
+//       console.log("It puked", error);
+//     });
+// } else {
+//   done();
+// }
+//   }
+// });
+
 // ADD ROUTER HOOKS - Example for when I implement my API
 
 router.hooks({

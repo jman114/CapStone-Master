@@ -8,7 +8,37 @@ export default st => html`
     <h2>Click Below To Book An Appointment</h2>
     <a href="./Book">Book Now</a>
   </section>
-  <section id="home">
+  <center><h2>How In A Snip Works</h2></center>
+<div class="row">
+  <div class="column">
+    <div class="column-header">
+      <center><h3>Book</h3></center>
+    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" style="width:90% height:80%">
+     <div class="colum-content"> 
+       <p>Select the time and date you'd like your barber to arrive.</p>
+     </div>
+   </div>
+</div>
+  <div class="column">
+  <div class="column-header">
+      <center><h3>Groom</h3></center>
+    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" style="width:90% height:80%">
+    <div class="colum-content"> 
+       <p>A licensed barber travels to your location and cuts your hair.</p>
+       </div>
+     </div>
+</div>
+  <div class="column">
+  <div class="column-header">
+      <center><h3>Relax</h3></center>
+    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648059788~hmac=da7162af52d6616027423690eac425f6" alt="Relaxing Getting A Hair Cut" style="width:90% height:80%">
+    <div class="colum-content"> 
+       <p>Sit back and relax! Professional service in your home, on your time.</p>
+      </div>
+    </div>
+   </div> 
+</div>
+  <!-- <section id="home">
     <content class="responsive flex">
       <div class="main-content">
         <br />
@@ -56,20 +86,8 @@ export default st => html`
             <h2>Column 3</h2>
             <p>Some text..</p>
           </div>
-        </div>
-        <p>
-          You can see my
-          <a
-            href="https://matchboxdesigngroup.com/team-member/james-mcminn-senior-digital-strategist/"
-            >profile</a
-          >
-          at
-          <a href="https://matchboxdesigngroup.com">Matchbox Design Group</a>.
-        </p>
-        <img
-          src="https://matchboxdesigngroup.com/app/uploads/2021/06/James-McMinn-personality-pic-3.jpg"
-          alt="Image"
-        /><br /><br />
+        </div> -->
+        <br /><br />
       </div>
     </content>
   </section>

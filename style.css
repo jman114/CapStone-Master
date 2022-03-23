@@ -2,7 +2,84 @@
   background-color: #0B4F6C;
 }
 
-#quote > #author {
+.accordion {
+  /* max-width: 400px; */
+  width: 80%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #496DDB;
+}
+
+.accordion__label,
+.accordion__content {
+  padding: 14px 20px;
+}
+
+.accordion__label {
+  display: block;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.1s;
+}
+
+.accordion__label:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.accordion__label::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 12px;
+  height: 6px;
+  background-size: contain;
+  transition: transform 0.4s;
+}
+
+.accordion__content {
+  background: #ffffff;
+  line-height: 1.6;
+  font-size: 0.85em;
+  display: none;
+}
+
+.accordion__input {
+  display: none;
+}
+
+.accordion__input:checked ~ .accordion__content {
+  display: block;
+}
+
+.accordion__input:checked ~ .accordion__label::after {
+  transform: translateY(-50%) rotate(0.5turn);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* #quote > #author {
   display: flex;
   justify-content: center;
 }
@@ -27,7 +104,7 @@
   margin-top: 10px;
   font-family: "Bradley Hand ITC";
   font-size: 35px;
-}
+} */
 
 #jumbotron {
   background: url(https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg) center center no-repeat;
@@ -171,9 +248,9 @@ nav > ul > li {
 }
 
 @media (min-width: 550px){
-  /* header {
-    height: 60vh;
-  } */
+  .column {
+    width: 100%;
+  }
 
 
   nav > ul {
@@ -204,7 +281,7 @@ nav > ul > li {
     background-repeat: no-repeat;
     background-size: 0% 100%;
     transition: background-size .5s, color .5s;
-    background-color: chartreuse;
+    background-color: #fff;
   }
 
   nav > ul > li:hover {
@@ -261,7 +338,7 @@ padding-left: 10px;
 }
 
 h1 {
-  color: #B0123c;
+  color: #FCA311;
   text-align:center;
 }
 
@@ -270,13 +347,23 @@ h2 {
   color:#FCA311
 }
 
+h3 {
+  color:#fff;
+  text-align:center;
+}
+
+h4 {
+  color:#fff;
+  text-align:center;
+}
+
 
 footer {
   background-color: #B0123c;
 }
 
 html {
-  background-color: #496DDB;
+  background-color: #0B4F6C;
 }
 
 img {
