@@ -1,4 +1,4 @@
 export default {
   header: "Stylists",
-  view: "Stylists"
+  view: "Stylists",
 };

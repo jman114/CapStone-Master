@@ -4,7 +4,7 @@ import html from "html-literal";
 export default () => html`
   <section id="jumbotron">
   <h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
+    <a href="./Schedule">Book Now</a>
   </section>
   <section id="about">
         <h2>Things For Capstone Website</h2>

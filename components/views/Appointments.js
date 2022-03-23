@@ -3,9 +3,12 @@ import html from "html-literal";
 export default () => html`
 <section id="jumbotron">
 <h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
+    <a href="./Schedule">Book Now</a>
   </section>
-<section id="book">
+  <div class="calendar-container"></div>
+  <div id="calendar"></div>
+
+<!-- <section id="book">
  <div class="main-content">
 <br>
 <br>
@@ -30,4 +33,5 @@ export default () => html`
 <P>This is where my contact form is going to go when I learn how to insert one.</P>
 </div>
 </main>
-</section>`;
+</section> -->
+`;

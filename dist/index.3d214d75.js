@@ -529,7 +529,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _dotenv = require("dotenv");
 var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
-_dotenvDefault.default.config();
+// dotenv.config();
 const router = new _navigoDefault.default("/");
 function render(st) {
     document.querySelector("#root").innerHTML = `
@@ -539,80 +539,71 @@ function render(st) {
     ${_components.Footer()}
   `;
     router.updatePageLinks();
-    addEventListeners();
+    addEventListeners(st);
 }
-function addEventListeners() {
+function addEventListeners(st) {
     // add event listeners to Nav items for navigation
-    document.querySelectorAll("nav a").forEach((navLink)=>navLink.addEventListener("click", (event)=>{
-            event.preventDefault();
-            render(_store[event.target.title]);
-        })
-    );
+    // document.querySelectorAll("nav a").forEach(navLink =>
+    //   navLink.addEventListener("click", event => {
+    //     event.preventDefault();
+    //     render(state[event.target.title]);
+    //   })
+    // );
     // add menu toggle to bars icon in nav bar
     document.querySelector(".fa-ellipsis-h").addEventListener("click", ()=>document.querySelector("nav > ul").classList.toggle("hidden--mobile")
     );
-    //Adding Calendar Feature 
-    document.addEventListener('DOMContentLoaded', function() {
+    if (st.view === "Schedule") document.querySelector("form").addEventListener("submit", (event)=>{
+        event.preventDefault();
+        const inputList = event.target.elements;
+        const requestData = {
+            customer: inputList.customer.value,
+            start: new Date(inputList.start.value).toJSON(),
+            end: new Date(inputList.end.value).toJSON()
+        };
+        _axiosDefault.default.post(`${"http://localhost:4040"}/appointments`, requestData).then((response)=>{
+            _store.Appointments.appointments.push(response.data);
+            router.navigate("/appointments");
+        }).catch((error)=>{
+            console.log("It puked", error);
+        });
+    });
+    if (st.view === "Appointments") {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
-            // US Holidays
-            events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
-            eventClick: function(arg) {
-                // opens events in a popup window
-                window.open(arg.event.url, '_blank', 'width=700,height=600');
-                // prevents current tab from navigating
-                arg.jsEvent.preventDefault();
-            }
+            events: st.appointments || []
         });
         calendar.render();
-    });
+    }
 }
-//Add Router Hook For Services Accordion
-// router.hooks({
-//   before: (done, params) => {
-//     const page =
-//       params && params.data && params.data.page
-//         ? capitalize(params.data.page)
-//         : "Services";
-// if (page === "Services") {
-//   const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
-// accordionItemHeaders.forEach(accordionItemHeader => {
-//   accordionItemHeader.addEventListener("click", event => {
-//     accordionItemHeader.classList.toggle("active");
-//     const accordionItemBody = accordionItemHeader.nextElementSibling;
-//     if(accordionItemHeader.classList.contains("active")) {
-//       accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
-//     }
-//     else {
-//       accordionItemBody.style.maxHeight = 0;
-//     }
-//   });
-// })
-//     .then(response => {
-//       console.log(response.data);
-//       state.Service.services = response.data;
-//       done();
-//     })
-//     .catch(error => {
-//       console.log("It puked", error);
+//Adding Calendar Feature 
+//     document.addEventListener('DOMContentLoaded', function() {
+//       var calendarEl = document.getElementById('calendar');
+//       var calendar = new FullCalendar.Calendar(calendarEl, {
+//         initialView: 'dayGridMonth',
+//         headerToolbar: {
+//           left: 'prev,next today',
+//           center: 'title',
+//           right: 'dayGridMonth,timeGridWeek,timeGridDay'
+//         },
+//         googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
+//         // US Holidays
+//         events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
+//         eventClick: function(arg) {
+//           // opens events in a popup window
+//           window.open(arg.event.url, '_blank', 'width=700,height=600');
+//           // prevents current tab from navigating
+//           arg.jsEvent.preventDefault();
+//       }
 //     });
-// } else {
-//   done();
+//       calendar.render();
+//     }); 
 // }
-//   }
-// });
-// ADD ROUTER HOOKS - Example for when I implement my API
+//Add Router Hooks
 router.hooks({
     before: (done, params)=>{
         const page = params && params.data && params.data.page ? _lodash.capitalize(params.data.page) : "Home";
-        if (page === "Home") _axiosDefault.default.get(`https://api.openweathermap.org/data/2.5/weather?appid=${"216f41c43e50e1b7547cefc7d81d58ad"}&q=st.%20louis`).then((response)=>{
+        if (page === "Home") _axiosDefault.default.get(`https://api.openweathermap.org/data/2.5/weather?q=st.%20louis&appid=${"216f41c43e50e1b7547cefc7d81d58ad"}`).then((response)=>{
             _store.Home.weather = {
             };
             _store.Home.weather.city = response.data.name;
@@ -622,9 +613,17 @@ router.hooks({
             done();
         }).catch((err)=>console.log(err)
         );
-        else if (page === "Pizza") _axiosDefault.default.get(`${"https://sc-pizza-api.herokuapp.com/pizzas"}`).then((response)=>{
-            console.log(response.data);
-            _store.Pizza.pizzas = response.data;
+        else if (page === "Appointments") _axiosDefault.default.get(`${"http://localhost:4040"}/appointments`).then((response)=>{
+            const events = response.data.map((event)=>{
+                return {
+                    id: event._id,
+                    title: event.customer,
+                    start: new Date(event.start),
+                    end: new Date(event.end)
+                };
+            });
+            _store.Appointments.appointments = events;
+            console.log('something-state.Appointments.appointments:', _store.Appointments.appointments);
             done();
         }).catch((error)=>{
             console.log("It puked", error);
@@ -639,7 +638,7 @@ router.on({
         let page = _lodash.capitalize(params.data.page);
         render(_store[page]);
     }
-}).resolve(); //Hello 
+}).resolve();
 
 },{"./components":"ePLYF","./store":"71t6G","navigo":"fuSlc","lodash":"3qBDj","axios":"jo6P5","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ePLYF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -906,9 +905,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Home", ()=>_homeDefault.default
 );
-parcelHelpers.export(exports, "About", ()=>_aboutDefault.default
+parcelHelpers.export(exports, "Schedule", ()=>_scheduleDefault.default
 );
-parcelHelpers.export(exports, "Book", ()=>_bookDefault.default
+parcelHelpers.export(exports, "Appointments", ()=>_appointmentsDefault.default
 );
 parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
@@ -916,16 +915,16 @@ parcelHelpers.export(exports, "Stylists", ()=>_stylistsDefault.default
 );
 var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
-var _about = require("./About");
-var _aboutDefault = parcelHelpers.interopDefault(_about);
-var _book = require("./Book");
-var _bookDefault = parcelHelpers.interopDefault(_book);
+var _schedule = require("./Schedule");
+var _scheduleDefault = parcelHelpers.interopDefault(_schedule);
+var _appointments = require("./Appointments");
+var _appointmentsDefault = parcelHelpers.interopDefault(_appointments);
 var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"d9WBP","./About":"4FEBc","./Book":"dxUOT","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d9WBP":[function(require,module,exports) {
+},{"./Home":"d9WBP","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"kenfy","./Schedule":"9TSnz"}],"d9WBP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
@@ -936,7 +935,7 @@ const kelvinToFahrenheit = (kelvinTemp)=>Math.round((kelvinTemp - 273.15) * 1.8 
 exports.default = (st)=>_htmlLiteralDefault.default`
   <section id="jumbotron">
     <h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
+    <a href="./Schedule">Book Now</a>
   </section>
   <center><h2>How In A Snip Works</h2></center>
 <div class="row">
@@ -1029,124 +1028,6 @@ exports.default = (st)=>_htmlLiteralDefault.default`
 `
 ;
 
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4FEBc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = ()=>_htmlLiteralDefault.default`
-  <section id="jumbotron">
-  <h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
-  </section>
-  <section id="about">
-        <h2>Things For Capstone Website</h2>
-        <ul id="first-list">
-          <li>
-            You can find my SWOT analysis
-            <a
-              href="https://docs.google.com/document/d/18_oAzv0vs8epPySofWTF5np7BsotSv7o0M9AUdvfVEY/edit?usp=sharing"
-              >here</a
-            >.
-          </li>
-          <li>
-            You can find my Flow Chart
-            <a
-              href="https://github.com/jman114/CapStone/blob/master/Documents/UserFlowSmartHairJM.pdf"
-              >here</a
-            >.
-          </li>
-          <li>
-            You can find my WireFrames for desktop
-            <a
-              href="https://github.com/jman114/CapStone/blob/master/Documents/SmartHairWireFrames%20-%20Desktop.pdf"
-              >here</a
-            >.
-          </li>
-          <li>
-            You can find my WireFrames for mobile
-            <a
-              href="https://github.com/jman114/CapStone/blob/master/Documents/SmartHairWireFrames%20-%20Mobile.pdf"
-              >here</a
-            >.
-          </li>
-        </ul>
-
-        <h2>Capstone Idea Definition Statement</h2>
-        <p>
-          I want to build an application that allows hairstylists and barbers to
-          sign up for a service (much like an uber driver) to go mobile and cut
-          people’s hair at home. The application will also allow users to search
-          through the stylist available by location and make appointments/rate
-          the service they received and pay/tip on with the application.
-        </p>
-        <h2>Capstone Elevator Pitch</h2>
-        <p>
-          Hi I’m James McMinn, a Savvy Coders student in St. Louis, Missouri.
-          It’s great to meet you!<br /><br />
-
-          Since you work with the top investing firm in St. Louis I figured
-          you’d be interested to know that millions of people can't get haircuts
-          for various reasons.<br /><br />
-
-          The thing that makes them similar is they simply can't get to the
-          salon or barbershop. 90% of people say they wish there was another way
-          to get a haircut.<br /><br />
-
-          The great part about being a Savvy Coder's student is that I've been
-          able to fix their problem with a new Uber-Like app where stylists or
-          barbers will come to your home to cut your hair.<br /><br />
-
-          In fact, my app is one of the only apps that offers a service to get
-          your haircut at home on demand.<br /><br />
-
-          I think my app could be beneficial to your investment firm as well as
-          myself. Are you available this week to speak further on this?”
-        </p>
-      </div>
-    </main>
-  </section>
-`
-;
-
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dxUOT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = ()=>_htmlLiteralDefault.default`
-<section id="jumbotron">
-<h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
-  </section>
-<section id="book">
- <div class="main-content">
-<br>
-<br>
-<h2>This Is My Future Contact Us Page</h2>
-<div id='calendar'></div>
- <div class="formcontainer">
-<form action="https://formspree.io/f/meqnkoed" method="POST">
-  <label for="name">Name:</label>
-  <input
-    type="text" name="name" id="name" placeholder="Full Name" required/><br><br>
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email" placeholder="you@somewhere.com"/><br><br>
-  <label for="fone">Phone:</label>
-  <input type="tel" name="fone" id="fone"placeholder="555-555-5555"/><br><br>
-  <div>
-    <label for="msg">Enter your message:</label><br><br>
-    <textarea name="msg" id="msg" rows="10"></textarea><br><br>
-    <button type="submit">Send</button>
-  </div>
-</form>
-</div>
-<P>This is where my contact form is going to go when I learn how to insert one.</P>
-</div>
-</main>
-</section>`
-;
-
 },{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"04aJa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1155,7 +1036,7 @@ var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = (st)=>_htmlLiteralDefault.default`
     <section id="jumbotron">
       <h2>Click Below To Book An Appointment</h2>
-      <a href="./Book">Book Now</a>
+      <a href="./Schedule">Book Now</a>
     </section>
     <h1>Services</h1>
   
@@ -1218,9 +1099,79 @@ var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = ()=>_htmlLiteralDefault.default`
   <section id="jumbotron">
     <h2>Click Below To Book An Appointment</h2>
-    <a href="./Book">Book Now</a>
+    <a href="./Schedule">Book Now</a>
   </section>
   WHAT?
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kenfy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+<section id="jumbotron">
+<h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+  <div class="calendar-container"></div>
+  <div id="calendar"></div>
+
+<!-- <section id="book">
+ <div class="main-content">
+<br>
+<br>
+<h2>This Is My Future Contact Us Page</h2>
+<div id='calendar'></div>
+ <div class="formcontainer">
+<form action="https://formspree.io/f/meqnkoed" method="POST">
+  <label for="name">Name:</label>
+  <input
+    type="text" name="name" id="name" placeholder="Full Name" required/><br><br>
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" placeholder="you@somewhere.com"/><br><br>
+  <label for="fone">Phone:</label>
+  <input type="tel" name="fone" id="fone"placeholder="555-555-5555"/><br><br>
+  <div>
+    <label for="msg">Enter your message:</label><br><br>
+    <textarea name="msg" id="msg" rows="10"></textarea><br><br>
+    <button type="submit">Send</button>
+  </div>
+</form>
+</div>
+<P>This is where my contact form is going to go when I learn how to insert one.</P>
+</div>
+</main>
+</section> -->
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9TSnz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+<section id="jumbotron">
+<h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+  <section id="schedule">
+    <form id="schedule-form" method="POST" action="">
+      <h2>Create an Appointment</h2>
+      <div>
+        <input type="text" name="customer" id="customer" />
+      </div>
+      <div>
+        <input id="start" name="start" type="datetime-local">
+      </div>
+      <div>
+        <input id="end" name="end" type="datetime-local">
+      </div>
+      <input type="submit" name="submit" value="Schedule" />
+    </form>
+  </section>
 `
 ;
 
@@ -1241,9 +1192,9 @@ parcelHelpers.export(exports, "Home", ()=>_homeDefault.default
 );
 parcelHelpers.export(exports, "Links", ()=>_linksDefault.default
 );
-parcelHelpers.export(exports, "About", ()=>_aboutDefault.default
+parcelHelpers.export(exports, "Schedule", ()=>_scheduleDefault.default
 );
-parcelHelpers.export(exports, "Book", ()=>_bookDefault.default
+parcelHelpers.export(exports, "Appointments", ()=>_appointmentsDefault.default
 );
 parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
@@ -1253,16 +1204,16 @@ var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _links = require("./Links");
 var _linksDefault = parcelHelpers.interopDefault(_links);
-var _about = require("./About");
-var _aboutDefault = parcelHelpers.interopDefault(_about);
-var _book = require("./Book");
-var _bookDefault = parcelHelpers.interopDefault(_book);
+var _schedule = require("./Schedule");
+var _scheduleDefault = parcelHelpers.interopDefault(_schedule);
+var _appointments = require("./Appointments");
+var _appointmentsDefault = parcelHelpers.interopDefault(_appointments);
 var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"60R7n","./Links":"jDBjl","./About":"3OUOl","./Book":"ivBQ0","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60R7n":[function(require,module,exports) {
+},{"./Home":"60R7n","./Links":"jDBjl","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"8RBT4","./Schedule":"cEzTn"}],"60R7n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -1290,30 +1241,14 @@ exports.default = [
         text: "Stylists"
     },
     {
-        title: "Book",
-        text: "Book Now"
+        title: "Appointments",
+        text: "Calendar"
     },
     {
-        title: "About",
-        text: "About"
+        title: "Schedule",
+        text: "Book Now"
     }, 
 ];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3OUOl":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    header: "About Us",
-    view: "About"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ivBQ0":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    header: "Book Now",
-    view: "Book"
-};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8mAuC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1329,6 +1264,23 @@ parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     header: "Stylists",
     view: "Stylists"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8RBT4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Appointments Calendar",
+    view: "Appointments",
+    appointments: []
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cEzTn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Schedule An Appointment",
+    view: "Schedule"
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuSlc":[function(require,module,exports) {
