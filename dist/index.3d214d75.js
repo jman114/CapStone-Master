@@ -1105,7 +1105,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
     <div class="accordion__content">
       <p>Beard Trim $45</p>
       <p>
-      Leave your beard sculpting to the professionals. Doorbell Barbers will analyze your beard growth, face 
+      Leave your beard sculpting to the professionals. In A Snip Barbers will analyze your beard growth, face 
       shape and hair texture to create a flawless looking beard. We will use a combination of clippers and scissors 
       along with beard oil, beard balm and witch hazel to achieve your beard goals in the comfort of your home. 
       </p>
@@ -1124,7 +1124,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
   </div>
   <div>
     <input type="checkbox" name="example_accordion" id="section4" class="accordion__input">
-    <label for="section3" class="accordion__label">Doorbell Barbers MANicure & Pedicure</label>
+    <label for="section3" class="accordion__label">In A Snip Barbers MANicure & Pedicure</label>
     <div class="accordion__content">
       <p>Doorbell Barbers MANicure & Pedicure $180</p>
       <p>
