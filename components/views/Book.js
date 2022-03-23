@@ -10,6 +10,7 @@ export default () => html`
 <br>
 <br>
 <h2>This Is My Future Contact Us Page</h2>
+<div id='calendar'></div>
  <div class="formcontainer">
 <form action="https://formspree.io/f/meqnkoed" method="POST">
   <label for="name">Name:</label>
@@ -26,9 +27,7 @@ export default () => html`
   </div>
 </form>
 </div>
-
 <P>This is where my contact form is going to go when I learn how to insert one.</P>
-
 </div>
 </main>
 </section>`;

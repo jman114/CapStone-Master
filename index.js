@@ -33,6 +33,33 @@ function addEventListeners() {
     .addEventListener("click", () =>
       document.querySelector("nav > ul").classList.toggle("hidden--mobile")
     );
+    //Adding Calendar Feature 
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
+
+        // US Holidays
+        events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
+  
+        eventClick: function(arg) {
+  
+          // opens events in a popup window
+          window.open(arg.event.url, '_blank', 'width=700,height=600');
+  
+          // prevents current tab from navigating
+          arg.jsEvent.preventDefault();
+      }
+    });
+
+      calendar.render();
+    }); 
 }
 
 // ADD ROUTER HOOKS - Example for when I implement my API

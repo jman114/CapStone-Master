@@ -551,6 +551,28 @@ function addEventListeners() {
     // add menu toggle to bars icon in nav bar
     document.querySelector(".fa-ellipsis-h").addEventListener("click", ()=>document.querySelector("nav > ul").classList.toggle("hidden--mobile")
     );
+    //Adding Calendar Feature 
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
+            // US Holidays
+            events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
+            eventClick: function(arg) {
+                // opens events in a popup window
+                window.open(arg.event.url, '_blank', 'width=700,height=600');
+                // prevents current tab from navigating
+                arg.jsEvent.preventDefault();
+            }
+        });
+        calendar.render();
+    });
 }
 // ADD ROUTER HOOKS - Example for when I implement my API
 router.hooks({
@@ -583,7 +605,7 @@ router.on({
         let page = _lodash.capitalize(params.data.page);
         render(_store[page]);
     }
-}).resolve();
+}).resolve(); //Hello 
 
 },{"./components":"ePLYF","./store":"71t6G","navigo":"fuSlc","lodash":"3qBDj","axios":"jo6P5","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ePLYF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1050,6 +1072,7 @@ exports.default = ()=>_htmlLiteralDefault.default`
 <br>
 <br>
 <h2>This Is My Future Contact Us Page</h2>
+<div id='calendar'></div>
  <div class="formcontainer">
 <form action="https://formspree.io/f/meqnkoed" method="POST">
   <label for="name">Name:</label>
@@ -1066,9 +1089,7 @@ exports.default = ()=>_htmlLiteralDefault.default`
   </div>
 </form>
 </div>
-
 <P>This is where my contact form is going to go when I learn how to insert one.</P>
-
 </div>
 </main>
 </section>`
