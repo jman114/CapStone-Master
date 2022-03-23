@@ -53,6 +53,11 @@
   border-radius: 10px;
 }
 
+#calendar {
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
 body {
     font-family:'Roboto', sans-serif;
 }
