@@ -13,7 +13,7 @@ export default st => html`
   <div class="column">
     <div class="column-header">
       <center><h3>Book</h3></center>
-    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" style="width:90% height:80%">
+    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" style="width:90%">
      <div class="colum-content"> 
        <p>Select the time and date you'd like your barber to arrive.</p>
      </div>
@@ -22,7 +22,7 @@ export default st => html`
   <div class="column">
   <div class="column-header">
       <center><h3>Groom</h3></center>
-    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" style="width:90% height:80%">
+    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" style="width:90%">
     <div class="colum-content"> 
        <p>A licensed barber travels to your location and cuts your hair.</p>
        </div>
@@ -31,7 +31,7 @@ export default st => html`
   <div class="column">
   <div class="column-header">
       <center><h3>Relax</h3></center>
-    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648088991~hmac=0f8379530afbff01d01f52e20e664af5" alt="Relaxing Getting A Hair Cut" style="width:90% height:80%">
+    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648088991~hmac=0f8379530afbff01d01f52e20e664af5" alt="Relaxing Getting A Hair Cut" style="width:90%">
     <div class="colum-content"> 
        <p>Sit back and relax! Professional service in your home, on your time.</p>
       </div>
