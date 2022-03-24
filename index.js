@@ -14,6 +14,7 @@ function render(st) {
   document.querySelector("#root").innerHTML = `
     ${Header(st)}
     ${Nav(state.Links)}
+    <!-- TODO: work on adding jumbotron here -->
     ${Main(st)}
     ${Footer()}
   `;
@@ -80,7 +81,7 @@ function addEventListeners(st) {
           day:      'Day',
           list:     'List'
         },
-        height: '100%',
+        // height: '100%',
         dayMaxEventRows: true,
         eventClick: function(info) {
           console.log('Event: ', info.event);
@@ -180,7 +181,7 @@ router.hooks({
           end: new Date(response.data.end),
           url: `/appointment/${response.data._id}`
         };
-        console.log('bleh.state.Appointment.appointment:', state.Appointment.appointment);
+        console.log('james.state.Appointment.appointment:', state.Appointment.appointment);
         done();
       })
       .catch((error) => {

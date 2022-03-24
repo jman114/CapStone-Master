@@ -535,6 +535,7 @@ function render(st) {
     document.querySelector("#root").innerHTML = `
     ${_components.Header(st)}
     ${_components.Nav(_store.Links)}
+    <!-- TODO: work on adding jumbotron here -->
     ${_components.Main(st)}
     ${_components.Footer()}
   `;
@@ -583,7 +584,7 @@ function addEventListeners(st) {
                 day: 'Day',
                 list: 'List'
             },
-            height: '100%',
+            // height: '100%',
             dayMaxEventRows: true,
             eventClick: function(info) {
                 console.log('Event: ', info.event);
@@ -662,7 +663,7 @@ router.hooks({
                 end: new Date(response.data.end),
                 url: `/appointment/${response.data._id}`
             };
-            console.log('bleh.state.Appointment.appointment:', _store.Appointment.appointment);
+            console.log('james.state.Appointment.appointment:', _store.Appointment.appointment);
             done();
         }).catch((error)=>{
             console.log("It puked", error);
@@ -955,6 +956,8 @@ parcelHelpers.export(exports, "Schedule", ()=>_scheduleDefault.default
 );
 parcelHelpers.export(exports, "Appointments", ()=>_appointmentsDefault.default
 );
+parcelHelpers.export(exports, "Appointment", ()=>_appointmentDefault.default
+);
 parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
 parcelHelpers.export(exports, "Stylists", ()=>_stylistsDefault.default
@@ -965,12 +968,14 @@ var _schedule = require("./Schedule");
 var _scheduleDefault = parcelHelpers.interopDefault(_schedule);
 var _appointments = require("./Appointments");
 var _appointmentsDefault = parcelHelpers.interopDefault(_appointments);
+var _appointment = require("./Appointment");
+var _appointmentDefault = parcelHelpers.interopDefault(_appointment);
 var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"d9WBP","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"kenfy","./Schedule":"9TSnz"}],"d9WBP":[function(require,module,exports) {
+},{"./Home":"d9WBP","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"kenfy","./Schedule":"9TSnz","./Appointment":"61hBW"}],"d9WBP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
@@ -1157,14 +1162,15 @@ parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = ()=>_htmlLiteralDefault.default`
-<section id="jumbotron">
-<h2>Click Below To Book An Appointment</h2>
+  <section id="jumbotron">
+    <h2>Click Below To Book An Appointment</h2>
     <a href="./Schedule">Book Now</a>
   </section>
+  <P>Hello</P>
   <div class="calendar-container"></div>
   <div id="calendar"></div>
 
-<!-- <section id="book">
+  <!-- <section id="book">
  <div class="main-content">
 <br>
 <br>
@@ -1218,6 +1224,24 @@ exports.default = ()=>_htmlLiteralDefault.default`
       <input type="submit" name="submit" value="Schedule" />
     </form>
   </section>
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61hBW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = (st)=>_htmlLiteralDefault.default`
+<div class="appointment-container">
+  <h3>${st.event.title}</h3>
+  <div>
+    <em>Start: </em><span>${st.event.start.toLocaleString()}</span>
+  </div>
+  <div>
+    <em>End: </em><span>${st.event.end.toLocaleString()}</span>
+  </div>
+</div>
 `
 ;
 

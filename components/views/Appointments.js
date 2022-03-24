@@ -1,14 +1,15 @@
 import html from "html-literal";
 
 export default () => html`
-<section id="jumbotron">
-<h2>Click Below To Book An Appointment</h2>
+  <section id="jumbotron">
+    <h2>Click Below To Book An Appointment</h2>
     <a href="./Schedule">Book Now</a>
   </section>
+  <P>Hello</P>
   <div class="calendar-container"></div>
   <div id="calendar"></div>
 
-<!-- <section id="book">
+  <!-- <section id="book">
  <div class="main-content">
 <br>
 <br>
