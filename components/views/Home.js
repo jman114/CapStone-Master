@@ -31,7 +31,7 @@ export default st => html`
   <div class="column">
   <div class="column-header">
       <center><h3>Relax</h3></center>
-    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648059788~hmac=da7162af52d6616027423690eac425f6" alt="Relaxing Getting A Hair Cut" style="width:90% height:80%">
+    <img src="https://cdn-icons.flaticon.com/png/512/3671/premium/3671163.png?token=exp=1648088991~hmac=0f8379530afbff01d01f52e20e664af5" alt="Relaxing Getting A Hair Cut" style="width:90% height:80%">
     <div class="colum-content"> 
        <p>Sit back and relax! Professional service in your home, on your time.</p>
       </div>
