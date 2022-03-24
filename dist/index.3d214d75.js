@@ -561,7 +561,7 @@ function addEventListeners(st) {
             start: new Date(inputList.start.value).toJSON(),
             end: new Date(inputList.end.value).toJSON()
         };
-        _axiosDefault.default.post(`${"https://capstone-2022-savvy.herokuapp.com/appointments"}/appointments`, requestData).then((response)=>{
+        _axiosDefault.default.post(`${"http://localhost:4040"}/appointments`, requestData).then((response)=>{
             _store.Appointments.appointments.push(response.data);
             router.navigate("/appointments");
         }).catch((error)=>{
@@ -640,7 +640,7 @@ router.hooks({
             done();
         }).catch((err)=>console.log(err)
         );
-        else if (page === "Appointments") _axiosDefault.default.get(`${"https://capstone-2022-savvy.herokuapp.com/appointments"}/appointments`).then((response)=>{
+        else if (page === "Appointments") _axiosDefault.default.get(`${"http://localhost:4040"}/appointments`).then((response)=>{
             const events = response.data.map((event)=>{
                 return {
                     id: event._id,
@@ -655,7 +655,7 @@ router.hooks({
         }).catch((error)=>{
             console.log("It puked", error);
         });
-        else if (page === "Appointment") _axiosDefault.default.get(`${"https://capstone-2022-savvy.herokuapp.com/appointments"}/appointments/${id}`).then((response)=>{
+        else if (page === "Appointment") _axiosDefault.default.get(`${"http://localhost:4040"}/appointments/${id}`).then((response)=>{
             _store.Appointment.event = {
                 id: response.data._id,
                 title: response.data.customer,
