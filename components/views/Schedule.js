@@ -9,10 +9,11 @@ export default () => html`
     <form id="schedule-form" method="POST" action="">
       <h2>Create an Appointment</h2>
       <div>
-        <input type="text" name="customer" id="customer" />
+        <input type="text" name="customer" id="customer" placeholder="Name" />
       </div>
       <div>
-        <input id="start" name="start" type="datetime-local">
+        Date And Time Of Appointment<br>
+        <input id="start" name="start" type="datetime-local" />
       </div>
       <div>
         <input id="end" name="end" type="datetime-local">
