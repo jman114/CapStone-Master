@@ -975,7 +975,7 @@ var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"d9WBP","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"kenfy","./Schedule":"9TSnz","./Appointment":"61hBW"}],"d9WBP":[function(require,module,exports) {
+},{"./Home":"d9WBP","./Schedule":"9TSnz","./Appointments":"kenfy","./Appointment":"61hBW","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d9WBP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
@@ -1076,6 +1076,95 @@ exports.default = (st)=>_htmlLiteralDefault.default`
     Weather in ${st.weather.city} ${kelvinToFahrenheit(st.weather.temp)}F, feels
     like ${kelvinToFahrenheit(st.weather.feelsLike)}F
   </h2>
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9TSnz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+<section id="jumbotron">
+<h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+  <section id="schedule">
+    <form id="schedule-form" method="POST" action="">
+      <h2>Create an Appointment</h2>
+      <div>
+        <input type="text" name="customer" id="customer" placeholder="Name" />
+      </div>
+      <div>
+        Date And Time Of Appointment<br>
+        <input id="start" name="start" type="datetime-local" />
+      </div>
+      <div>
+        <input id="end" name="end" type="datetime-local">
+      </div>
+      <input type="submit" name="submit" value="Schedule" />
+    </form>
+  </section>
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kenfy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+  <section id="jumbotron">
+    <h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+  <div class="calendar-container"></div>
+  <div id="calendar"></div>
+
+  <!-- <section id="book">
+ <div class="main-content">
+<br>
+<br>
+<h2>This Is My Future Contact Us Page</h2>
+<div id='calendar'></div>
+ <div class="formcontainer">
+<form action="https://formspree.io/f/meqnkoed" method="POST">
+  <label for="name">Name:</label>
+  <input
+    type="text" name="name" id="name" placeholder="Full Name" required/><br><br>
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" placeholder="you@somewhere.com"/><br><br>
+  <label for="fone">Phone:</label>
+  <input type="tel" name="fone" id="fone"placeholder="555-555-5555"/><br><br>
+  <div>
+    <label for="msg">Enter your message:</label><br><br>
+    <textarea name="msg" id="msg" rows="10"></textarea><br><br>
+    <button type="submit">Send</button>
+  </div>
+</form>
+</div>
+<P>This is where my contact form is going to go when I learn how to insert one.</P>
+</div>
+</main>
+</section> -->
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61hBW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = (st)=>_htmlLiteralDefault.default`
+<div class="appointment-container">
+  <h3>${st.event.title}</h3>
+  <div>
+    <em>Start: </em><span>${st.event.start.toLocaleString()}</span>
+  </div>
+  <div>
+    <em>End: </em><span>${st.event.end.toLocaleString()}</span>
+  </div>
+</div>
 `
 ;
 
@@ -1228,95 +1317,6 @@ exports.default = ()=>_htmlLiteralDefault.default`
 `
 ;
 
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kenfy":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = ()=>_htmlLiteralDefault.default`
-  <section id="jumbotron">
-    <h2>Click Below To Book An Appointment</h2>
-    <a href="./Schedule">Book Now</a>
-  </section>
-  <div class="calendar-container"></div>
-  <div id="calendar"></div>
-
-  <!-- <section id="book">
- <div class="main-content">
-<br>
-<br>
-<h2>This Is My Future Contact Us Page</h2>
-<div id='calendar'></div>
- <div class="formcontainer">
-<form action="https://formspree.io/f/meqnkoed" method="POST">
-  <label for="name">Name:</label>
-  <input
-    type="text" name="name" id="name" placeholder="Full Name" required/><br><br>
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email" placeholder="you@somewhere.com"/><br><br>
-  <label for="fone">Phone:</label>
-  <input type="tel" name="fone" id="fone"placeholder="555-555-5555"/><br><br>
-  <div>
-    <label for="msg">Enter your message:</label><br><br>
-    <textarea name="msg" id="msg" rows="10"></textarea><br><br>
-    <button type="submit">Send</button>
-  </div>
-</form>
-</div>
-<P>This is where my contact form is going to go when I learn how to insert one.</P>
-</div>
-</main>
-</section> -->
-`
-;
-
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9TSnz":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = ()=>_htmlLiteralDefault.default`
-<section id="jumbotron">
-<h2>Click Below To Book An Appointment</h2>
-    <a href="./Schedule">Book Now</a>
-  </section>
-  <section id="schedule">
-    <form id="schedule-form" method="POST" action="">
-      <h2>Create an Appointment</h2>
-      <div>
-        <input type="text" name="customer" id="customer" placeholder="Name" />
-      </div>
-      <div>
-        Date And Time Of Appointment<br>
-        <input id="start" name="start" type="datetime-local" />
-      </div>
-      <div>
-        <input id="end" name="end" type="datetime-local">
-      </div>
-      <input type="submit" name="submit" value="Schedule" />
-    </form>
-  </section>
-`
-;
-
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61hBW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = (st)=>_htmlLiteralDefault.default`
-<div class="appointment-container">
-  <h3>${st.event.title}</h3>
-  <div>
-    <em>Start: </em><span>${st.event.start.toLocaleString()}</span>
-  </div>
-  <div>
-    <em>End: </em><span>${st.event.end.toLocaleString()}</span>
-  </div>
-</div>
-`
-;
-
 },{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gIRCJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1359,7 +1359,7 @@ var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"60R7n","./Links":"jDBjl","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointments":"8RBT4","./Schedule":"cEzTn","./Appointment":"aEKI8"}],"60R7n":[function(require,module,exports) {
+},{"./Home":"60R7n","./Links":"jDBjl","./Schedule":"cEzTn","./Appointments":"8RBT4","./Appointment":"aEKI8","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60R7n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -1396,6 +1396,33 @@ exports.default = [
     }, 
 ];
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cEzTn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Schedule An Appointment",
+    view: "Schedule"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8RBT4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Appointments",
+    view: "Appointments",
+    appointments: []
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aEKI8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Appointment",
+    view: "Appointment",
+    event: {
+    }
+};
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8mAuC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1410,33 +1437,6 @@ parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     header: "Stylists",
     view: "Stylists"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8RBT4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    header: "Appointments",
-    view: "Appointments",
-    appointments: []
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cEzTn":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    header: "Schedule An Appointment",
-    view: "Schedule"
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aEKI8":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    header: "Appointment",
-    view: "Appointment",
-    event: {
-    }
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuSlc":[function(require,module,exports) {
