@@ -687,7 +687,7 @@ router.on({
     }
 }).resolve();
 
-},{"./components":"ePLYF","./store":"71t6G","navigo":"fuSlc","lodash":"3qBDj","axios":"jo6P5","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ePLYF":[function(require,module,exports) {
+},{"./components":"ePLYF","./store":"71t6G","navigo":"fuSlc","lodash":"3qBDj","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","dotenv":"lErsX"}],"ePLYF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Header", ()=>_headerDefault.default
@@ -975,7 +975,7 @@ var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
 
-},{"./Home":"d9WBP","./Schedule":"9TSnz","./Appointments":"kenfy","./Appointment":"61hBW","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d9WBP":[function(require,module,exports) {
+},{"./Home":"d9WBP","./Schedule":"9TSnz","./Appointments":"kenfy","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointment":"61hBW"}],"d9WBP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
@@ -993,7 +993,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
   <div class="column">
     <div class="column-header">
       <center><h3>Book</h3></center>
-    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" style="width:90%">
+      <a href="/schedule"><img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" width="90%"></a>
      <div class="colum-content"> 
        <p>Select the time and date you'd like your barber to arrive.</p>
      </div>
@@ -1002,7 +1002,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
   <div class="column">
   <div class="column-header">
       <center><h3>Groom</h3></center>
-    <img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" style="width:90%">
+      <a href="/stylists"><img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" width="90%"></a>
     <div class="colum-content"> 
        <p>A licensed barber travels to your location and cuts your hair.</p>
        </div>
@@ -1011,7 +1011,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
   <div class="column">
   <div class="column-header">
       <center><h3>Relax</h3></center>
-    <img src="https://cdn-icons-png.flaticon.com/512/2798/2798223.png" alt="Relaxing Getting A Hair Cut" style="width:90%">
+    <a href="/services"><img src="https://cdn-icons-png.flaticon.com/512/2798/2798223.png" alt="Relaxing Getting A Hair Cut" width="90%"></a>
     <div class="colum-content"> 
        <p>Sit back and relax! Professional service in your home, on your time.</p>
       </div>
@@ -1071,6 +1071,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
       </div>
     </content>
   </section>
+  <br /><br /><br /><br /><br /><br />
   <!-- Using this as an example when for my API -->
   <h2>
     Weather in ${st.weather.city} ${kelvinToFahrenheit(st.weather.temp)}F, feels
@@ -1147,24 +1148,6 @@ exports.default = ()=>_htmlLiteralDefault.default`
 </div>
 </main>
 </section> -->
-`
-;
-
-},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61hBW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _htmlLiteral = require("html-literal");
-var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
-exports.default = (st)=>_htmlLiteralDefault.default`
-<div class="appointment-container">
-  <h3>${st.event.title}</h3>
-  <div>
-    <em>Start: </em><span>${st.event.start.toLocaleString()}</span>
-  </div>
-  <div>
-    <em>End: </em><span>${st.event.end.toLocaleString()}</span>
-  </div>
-</div>
 `
 ;
 
@@ -1314,6 +1297,24 @@ exports.default = ()=>_htmlLiteralDefault.default`
    </div> 
 </div>
 <br><br><br><br>
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"61hBW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = (st)=>_htmlLiteralDefault.default`
+<div class="appointment-container">
+  <h3>${st.event.title}</h3>
+  <div>
+    <em>Start: </em><span>${st.event.start.toLocaleString()}</span>
+  </div>
+  <div>
+    <em>End: </em><span>${st.event.end.toLocaleString()}</span>
+  </div>
+</div>
 `
 ;
 
