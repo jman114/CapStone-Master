@@ -1,6 +1,6 @@
-.main-content {
+/* .main-content {
   background-color: #0B4F6C;
-}
+} */
 
 .accordion {
   /* max-width: 400px; */
@@ -61,6 +61,10 @@
 .accordion__input:checked ~ .accordion__label::after {
   transform: translateY(-50%) rotate(0.5turn);
 }
+
+/* nav {
+  background-color: #0B4F6C;
+} */
 
 * {
   box-sizing: border-box;
@@ -133,6 +137,7 @@
 #calendar {
   max-width: 1000px;
   margin: 40px auto;
+  background-color: #7cbad4;
 }
 
 body {
@@ -143,6 +148,9 @@ body {
   box-sizing: border-box;
 } */
 
+/* header {
+  background-color: #0B4F6C;
+} */
 
 /* header > a {
   text-decoration: none;
@@ -153,7 +161,7 @@ body {
   color: white;
 }
 
-header > a:hover {
+/* header > a:hover {
   background-color: black;
 } */
 
@@ -208,7 +216,7 @@ nav > ul > li {
   width: 100%;
 }
 
- #first-list {
+ /* #first-list {
   width: auto;
   border-width: 5px 10px 5px 8px;
   border-color: #496DDB;
@@ -221,7 +229,7 @@ nav > ul > li {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
-}
+} */
 
 
 #first-list > li {
@@ -344,6 +352,7 @@ h1 {
 
 h2 {
   margin-left: 20px;
+  font-size: 46px;
   color:#FCA311
 }
 
@@ -381,6 +390,7 @@ footer {
 
 html {
   background-color: #0B4F6C;
+  background-image: url("https://matchboxdesigngroup.com/app/uploads/2022/04/def-1-1-scaled.jpg");
 }
 
 img {

@@ -49,7 +49,7 @@ function addEventListeners(st) {
         const requestData = {
           customer: inputList.customer.value,
           start: new Date(inputList.start.value).toJSON(),
-          end: new Date(inputList.end.value).toJSON(),
+           end: new Date(inputList.end.value).toJSON(),
         };
   
         axios
@@ -87,42 +87,13 @@ function addEventListeners(st) {
           console.log('Event: ', info.event);
   
           // change the border color just for fun
-          info.el.style.borderColor = 'red';
+          // info.el.style.borderColor = 'red';
         },
         events: st.appointments || []
       });
       calendar.render();
     }
 }
-
-    //Adding Calendar Feature 
-//     document.addEventListener('DOMContentLoaded', function() {
-//       var calendarEl = document.getElementById('calendar');
-//       var calendar = new FullCalendar.Calendar(calendarEl, {
-//         initialView: 'dayGridMonth',
-//         headerToolbar: {
-//           left: 'prev,next today',
-//           center: 'title',
-//           right: 'dayGridMonth,timeGridWeek,timeGridDay'
-//         },
-//         googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
-
-//         // US Holidays
-//         events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
-  
-//         eventClick: function(arg) {
-  
-//           // opens events in a popup window
-//           window.open(arg.event.url, '_blank', 'width=700,height=600');
-  
-//           // prevents current tab from navigating
-//           arg.jsEvent.preventDefault();
-//       }
-//     });
-
-//       calendar.render();
-//     }); 
-// }
 
 //Add Router Hooks
 router.hooks({

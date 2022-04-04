@@ -588,37 +588,14 @@ function addEventListeners(st) {
             dayMaxEventRows: true,
             eventClick: function(info) {
                 console.log('Event: ', info.event);
-                // change the border color just for fun
-                info.el.style.borderColor = 'red';
+            // change the border color just for fun
+            // info.el.style.borderColor = 'red';
             },
             events: st.appointments || []
         });
         calendar.render();
     }
 }
-//Adding Calendar Feature 
-//     document.addEventListener('DOMContentLoaded', function() {
-//       var calendarEl = document.getElementById('calendar');
-//       var calendar = new FullCalendar.Calendar(calendarEl, {
-//         initialView: 'dayGridMonth',
-//         headerToolbar: {
-//           left: 'prev,next today',
-//           center: 'title',
-//           right: 'dayGridMonth,timeGridWeek,timeGridDay'
-//         },
-//         googleCalendarApiKey: 'AIzaSyB_RFlArNdC-ieQmHbPzvRH03ZQalORGew',
-//         // US Holidays
-//         events: 'o16j2bvc1vngvsjk01eu13hf50@group.calendar.google.com',
-//         eventClick: function(arg) {
-//           // opens events in a popup window
-//           window.open(arg.event.url, '_blank', 'width=700,height=600');
-//           // prevents current tab from navigating
-//           arg.jsEvent.preventDefault();
-//       }
-//     });
-//       calendar.render();
-//     }); 
-// }
 //Add Router Hooks
 router.hooks({
     before: (done, params)=>{
@@ -1092,7 +1069,7 @@ exports.default = ()=>_htmlLiteralDefault.default`
   </section>
   <section id="schedule">
     <form id="schedule-form" method="POST" action="">
-      <h2>Create an Appointment</h2>
+      <h2>Create An Appointment</h2>
       <div>
         <input type="text" name="customer" id="customer" placeholder="Name" />
       </div>
@@ -1121,33 +1098,6 @@ exports.default = ()=>_htmlLiteralDefault.default`
   </section>
   <div class="calendar-container"></div>
   <div id="calendar"></div>
-
-  <!-- <section id="book">
- <div class="main-content">
-<br>
-<br>
-<h2>This Is My Future Contact Us Page</h2>
-<div id='calendar'></div>
- <div class="formcontainer">
-<form action="https://formspree.io/f/meqnkoed" method="POST">
-  <label for="name">Name:</label>
-  <input
-    type="text" name="name" id="name" placeholder="Full Name" required/><br><br>
-  <label for="email">Email:</label>
-  <input type="email" name="email" id="email" placeholder="you@somewhere.com"/><br><br>
-  <label for="fone">Phone:</label>
-  <input type="tel" name="fone" id="fone"placeholder="555-555-5555"/><br><br>
-  <div>
-    <label for="msg">Enter your message:</label><br><br>
-    <textarea name="msg" id="msg" rows="10"></textarea><br><br>
-    <button type="submit">Send</button>
-  </div>
-</form>
-</div>
-<P>This is where my contact form is going to go when I learn how to insert one.</P>
-</div>
-</main>
-</section> -->
 `
 ;
 
@@ -1161,7 +1111,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
       <h2>Click Below To Book An Appointment</h2>
       <a href="./Schedule">Book Now</a>
     </section>
-    <h1>Services</h1>
+    <center><h2>Services</h2></center>
   
 <div class="accordion">
   <div>
@@ -1306,6 +1256,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = (st)=>_htmlLiteralDefault.default`
+
 <div class="appointment-container">
   <h3>${st.event.title}</h3>
   <div>
@@ -1324,7 +1275,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = ()=>_htmlLiteralDefault.default`
-  <footer>&copy; 2022 <a href="https://savvycoders.com/">Quick Cut</a></footer>
+  <footer>&copy; 2022 <a href="/">In A Snip</a></footer>
 `
 ;
 

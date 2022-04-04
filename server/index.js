@@ -69,11 +69,11 @@ app.get("/status", (request, response) => {
 });
 
 // funky status check for teapot
-app.get("/", (request, response) => {
-  response
-    .status(418)
-    .json({ message: "No Resource Found Here, Please see instructions" });
-});
+// app.get("/", (request, response) => {
+//   response
+//     .status(418)
+//     .json({ message: "No Resource Found Here, Please see instructions" });
+// });
 
 // route to return the post body
 app.post("/", (request, response) => {

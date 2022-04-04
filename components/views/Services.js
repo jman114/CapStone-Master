@@ -6,7 +6,7 @@ export default st =>
       <h2>Click Below To Book An Appointment</h2>
       <a href="./Schedule">Book Now</a>
     </section>
-    <h1>Services</h1>
+    <center><h2>Services</h2></center>
   
 <div class="accordion">
   <div>

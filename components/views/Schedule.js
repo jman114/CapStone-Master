@@ -7,7 +7,7 @@ export default () => html`
   </section>
   <section id="schedule">
     <form id="schedule-form" method="POST" action="">
-      <h2>Create an Appointment</h2>
+      <h2>Create An Appointment</h2>
       <div>
         <input type="text" name="customer" id="customer" placeholder="Name" />
       </div>
