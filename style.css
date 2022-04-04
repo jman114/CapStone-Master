@@ -237,7 +237,7 @@ nav > ul > li {
   font-weight: bold;
 }
 
-.my-second-list {
+/* .my-second-list {
   width: auto;
   border-width: 5px 10px 5px 8px;
   border-color: #496DDB;
@@ -251,7 +251,7 @@ nav > ul > li {
   padding-bottom: 10px;
   padding-right: 10px;
   font-weight:bold;
-}
+} */
 
 }
 
@@ -357,12 +357,12 @@ h2 {
 }
 
 h3 {
-  color:#fff;
+  color:#000;
   text-align:center;
 }
 
 h4 {
-  color:#fff;
+  color:#000;
   text-align:center;
 }
 
@@ -390,7 +390,7 @@ footer {
 
 html {
   background-color: #0B4F6C;
-  background-image: url("https://matchboxdesigngroup.com/app/uploads/2022/04/def-1-1-scaled.jpg");
+  /* background-image: url("https://matchboxdesigngroup.com/app/uploads/2022/04/def-1-1-scaled.jpg"); */
 }
 
 img {
