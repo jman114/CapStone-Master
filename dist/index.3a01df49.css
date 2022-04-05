@@ -62,9 +62,115 @@
   transform: translateY(-50%) rotate(0.5turn);
 }
 
-/* nav {
-  background-color: #0B4F6C;
+form {
+  /* border: solid .5rem black; */
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem; width: 80%;
+  /* border-width: 5px 10px 5px 8px; */
+  /* border-color: #496DDB; */
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  /* background-color: #B0123c; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-weight:bold;
+}
+
+/* .textName {
+  display: inline-block;
 } */
+
+form > * {
+  margin: 0.5rem;
+}
+
+/* form > input[type="submit"] {
+  width: 50%;
+  margin: 0.5rem;
+  margin-right: auto;
+} */
+
+input[type=text], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=tel], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=datetime-local], select {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 60%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* #formcontainer > input[type="submit"] {
+  width: 40%;
+  margin: 0.5rem;
+  margin-right: auto;
+} */
+
+#formcontainer {
+  width: 90%;
+  /* border-width: 5px 10px 5px 8px; */
+  /* border: solid .5rem black; */
+  border-style: solid;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  /* background-color: #B0123c; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-weight:bold;
+}
 
 * {
   box-sizing: border-box;
@@ -76,40 +182,11 @@
   padding: 5px;
 }
 
-/* Clearfix (clear floats) */
-
 .row::after {
   content: "";
   clear: both;
   display: table;
 }
-
-/* #quote > #author {
-  display: flex;
-  justify-content: center;
-}
-
-.quoteContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: 50px;
-  width: 80%;
-  border: 1px solid grey;
-  border-radius: 20px;
-}
-
-#quote {
-  font-family: "Bradley Hand ITC";
-  text-align: center;
-  font-size: 20px;
-}
-
-#author {
-  margin-top: 10px;
-  font-family: "Bradley Hand ITC";
-  font-size: 35px;
-} */
 
 #jumbotron {
   background: url("https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg") center center no-repeat;
@@ -284,7 +361,7 @@ nav > ul > li {
     border: 2px solid #B0123c;
     color: #B0123c;
     font-size: 30px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     background-image: linear-gradient(#B0123c, #B0123c);
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -366,23 +443,6 @@ h4 {
   text-align:center;
 }
 
-form {
-  border: solid 1px black;
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 1rem;
-}
-
-form > * {
-  margin: 0.5rem;
-}
-
-form > input[type="submit"] {
-  width: 40%;
-  margin: 0.5rem;
-  margin-right: auto;
-}
-
 footer {
   background-color: #B0123c;
 }
@@ -400,22 +460,6 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-}
-
-.formcontainer {
-  width: 50%;
-  border-width: 5px 10px 5px 8px;
-  border-color: #496DDB;
-  border-style: solid;
-  border-radius: 0%;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: #B0123c;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  font-weight:bold;
 }
 
 /* .row{clear:both} */

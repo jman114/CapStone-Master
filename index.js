@@ -25,14 +25,6 @@ function render(st) {
 }
 
 function addEventListeners(st) {
- // add event listeners to Nav items for navigation
-  // document.querySelectorAll("nav a").forEach(navLink =>
-  //   navLink.addEventListener("click", event => {
-  //     event.preventDefault();
-  //     render(state[event.target.title]);
-  //   })
-  // );
-  // add menu toggle to bars icon in nav bar
   document
     .querySelector(".fa-ellipsis-h")
     .addEventListener("click", () =>
@@ -85,9 +77,6 @@ function addEventListeners(st) {
         dayMaxEventRows: true,
         eventClick: function(info) {
           console.log('Event: ', info.event);
-  
-          // change the border color just for fun
-          // info.el.style.borderColor = 'red';
         },
         events: st.appointments || []
       });

@@ -1,5 +1,4 @@
 import html from "html-literal";
-//import dogPic from "../../assets/img/photo-1510771463146-e89e6e86560e.jpeg";
 
 export default () => html`
   <section id="jumbotron">

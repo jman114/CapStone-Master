@@ -543,14 +543,6 @@ function render(st) {
     addEventListeners(st);
 }
 function addEventListeners(st) {
-    // add event listeners to Nav items for navigation
-    // document.querySelectorAll("nav a").forEach(navLink =>
-    //   navLink.addEventListener("click", event => {
-    //     event.preventDefault();
-    //     render(state[event.target.title]);
-    //   })
-    // );
-    // add menu toggle to bars icon in nav bar
     document.querySelector(".fa-ellipsis-h").addEventListener("click", ()=>document.querySelector("nav > ul").classList.toggle("hidden--mobile")
     );
     if (st.view === "Schedule") document.querySelector("form").addEventListener("submit", (event)=>{
@@ -588,8 +580,6 @@ function addEventListeners(st) {
             dayMaxEventRows: true,
             eventClick: function(info) {
                 console.log('Event: ', info.event);
-            // change the border color just for fun
-            // info.el.style.borderColor = 'red';
             },
             events: st.appointments || []
         });
@@ -939,6 +929,10 @@ parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
 parcelHelpers.export(exports, "Stylists", ()=>_stylistsDefault.default
 );
+parcelHelpers.export(exports, "About", ()=>_aboutDefault.default
+);
+parcelHelpers.export(exports, "Contact", ()=>_contactDefault.default
+);
 var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _schedule = require("./Schedule");
@@ -951,8 +945,12 @@ var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
+var _about = require("./About");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+var _contact = require("./Contact");
+var _contactDefault = parcelHelpers.interopDefault(_contact);
 
-},{"./Home":"d9WBP","./Schedule":"9TSnz","./Appointments":"kenfy","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointment":"61hBW"}],"d9WBP":[function(require,module,exports) {
+},{"./Home":"d9WBP","./Schedule":"9TSnz","./Appointments":"kenfy","./Services":"04aJa","./Stylists":"4qrOI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Appointment":"61hBW","./About":"4FEBc","./Contact":"Fyyq5"}],"d9WBP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
@@ -995,55 +993,6 @@ exports.default = (st)=>_htmlLiteralDefault.default`
     </div>
    </div> 
 </div>
-  <!-- <section id="home">
-    <content class="responsive flex">
-      <div class="main-content">
-        <br />
-        <br />
-        <div class="row">
-          <div class="column">
-            <h2>Why Choose Us</h2>
-            <ul id="first-list">
-              <li>Music</li>
-              <li>Basketball</li>
-              <li>Learning New Things</li>
-              <li>Problem Solving</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h2>What We Do</h2>
-            <ol class="my-second-list">
-              <li>Being Wrong</li>
-              <li>Not Being Able To Figure Something Out</li>
-              <li>Unfinished</li>
-            </ol>
-          </div>
-          <div class="column">
-            <h2>Book With Us</h2>
-            <ol class="my-second-list">
-              <li>Being Wrong</li>
-              <li>Not Being Able To Figure Something Out</li>
-              <li>Unfinished</li>
-            </ol>
-          </div>
-        </div>
-        <p>
-          This is going to contain more information than you ever cared to know.
-        </p>
-        <div class="row">
-          <div class="column" style="background-color:#aaa;">
-            <h2>Column 1</h2>
-            <p>Some text..</p>
-          </div>
-          <div class="column" style="background-color:#bbb;">
-            <h2>Column 2</h2>
-            <p>Some text..</p>
-          </div>
-          <div class="column" style="background-color:#ccc;">
-            <h2>Column 3</h2>
-            <p>Some text..</p>
-          </div>
-        </div> -->
         <br /><br />
       </div>
     </content>
@@ -1067,21 +1016,28 @@ exports.default = ()=>_htmlLiteralDefault.default`
 <h2>Click Below To Book An Appointment</h2>
     <a href="./Schedule">Book Now</a>
   </section>
+  <h2>Create An Appointment</h2>
   <section id="schedule">
     <form id="schedule-form" method="POST" action="">
-      <h2>Create An Appointment</h2>
       <div>
-        <input type="text" name="customer" id="customer" placeholder="Name" />
+        <input type="text" name="customer" id="customer" placeholder=" Full Name" />
       </div>
       <div>
-        Date And Time Of Appointment<br>
+      Phone Number: <br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
+    <small>Format: 123-456-7890</small>
+      </div>
+      <div>
+        Date And Start Time<br>
         <input id="start" name="start" type="datetime-local" />
       </div>
       <div>
+        Date And End Time<br>
         <input id="end" name="end" type="datetime-local">
       </div>
-      <input type="submit" name="submit" value="Schedule" />
+      <input type="submit" name="submit" value="submit" />
     </form>
+  
   </section>
 `
 ;
@@ -1269,13 +1225,130 @@ exports.default = (st)=>_htmlLiteralDefault.default`
 `
 ;
 
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4FEBc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+  <section id="jumbotron">
+  <h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+  <section id="about">
+        <h2>Things For Capstone Website</h2>
+        <ul id="first-list">
+          <li>
+            You can find my SWOT analysis
+            <a
+              href="https://docs.google.com/document/d/18_oAzv0vs8epPySofWTF5np7BsotSv7o0M9AUdvfVEY/edit?usp=sharing"
+              >here</a
+            >.
+          </li>
+          <li>
+            You can find my Flow Chart
+            <a
+              href="https://github.com/jman114/CapStone/blob/master/Documents/UserFlowSmartHairJM.pdf"
+              >here</a
+            >.
+          </li>
+          <li>
+            You can find my WireFrames for desktop
+            <a
+              href="https://github.com/jman114/CapStone/blob/master/Documents/SmartHairWireFrames%20-%20Desktop.pdf"
+              >here</a
+            >.
+          </li>
+          <li>
+            You can find my WireFrames for mobile
+            <a
+              href="https://github.com/jman114/CapStone/blob/master/Documents/SmartHairWireFrames%20-%20Mobile.pdf"
+              >here</a
+            >.
+          </li>
+        </ul>
+
+        <h2>Capstone Idea Definition Statement</h2>
+        <p>
+          I want to build an application that allows hairstylists and barbers to
+          sign up for a service (much like an uber driver) to go mobile and cut
+          people’s hair at home. The application will also allow users to search
+          through the stylist available by location and make appointments/rate
+          the service they received and pay/tip on with the application.
+        </p>
+        <h2>Capstone Elevator Pitch</h2>
+        <p>
+          Hi I’m James McMinn, a Savvy Coders student in St. Louis, Missouri.
+          It’s great to meet you!<br /><br />
+
+          Since you work with the top investing firm in St. Louis I figured
+          you’d be interested to know that millions of people can't get haircuts
+          for various reasons.<br /><br />
+
+          The thing that makes them similar is they simply can't get to the
+          salon or barbershop. 90% of people say they wish there was another way
+          to get a haircut.<br /><br />
+
+          The great part about being a Savvy Coder's student is that I've been
+          able to fix their problem with a new Uber-Like app where stylists or
+          barbers will come to your home to cut your hair.<br /><br />
+
+          In fact, my app is one of the only apps that offers a service to get
+          your haircut at home on demand.<br /><br />
+
+          I think my app could be beneficial to your investment firm as well as
+          myself. Are you available this week to speak further on this?”
+        </p>
+      </div>
+    </main>
+  </section>
+`
+;
+
+},{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Fyyq5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _htmlLiteral = require("html-literal");
+var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
+exports.default = ()=>_htmlLiteralDefault.default`
+<section id="jumbotron">
+  <h2>Click Below To Book An Appointment</h2>
+    <a href="./Schedule">Book Now</a>
+  </section>
+<h2>Click Below To Contact Us</h2>
+<br>
+<form id="formcontainer" action="https://formspree.io/f/xayvovwr" method="POST">
+<div class="textName">
+<label>
+Name:<br>
+    <input type="text" name="customer" id="customer" placeholder="Name">
+  </label>
+  </div>
+  <label>
+Email: <br>
+    <input type="email" name="email" placeholder="Email">
+  </label>
+  <label>
+Phone Number: <br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
+    <small>Format: 123-456-7890</small>
+</label>
+<label>
+Your message:<br>
+    <textarea type="text" name="Message" placeholder="Air Your Grievances"></textarea>
+  </label><br>
+  <input type="submit" name="submit" value="submit"></input>
+</form>
+`
+;
+
 },{"html-literal":"amMXC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gIRCJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = ()=>_htmlLiteralDefault.default`
-  <footer>&copy; 2022 <a href="/">In A Snip</a></footer>
+  <footer>&copy; 2022 <a href="/">In A Snip</a> | <a href="./About">About</a> | <a href="./Contact">Contact</a></footer>
 `
 ;
 
@@ -1296,6 +1369,10 @@ parcelHelpers.export(exports, "Services", ()=>_servicesDefault.default
 );
 parcelHelpers.export(exports, "Stylists", ()=>_stylistsDefault.default
 );
+parcelHelpers.export(exports, "About", ()=>_aboutDefault.default
+);
+parcelHelpers.export(exports, "Contact", ()=>_contactDefault.default
+);
 var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _links = require("./Links");
@@ -1310,8 +1387,12 @@ var _services = require("./Services");
 var _servicesDefault = parcelHelpers.interopDefault(_services);
 var _stylists = require("./Stylists");
 var _stylistsDefault = parcelHelpers.interopDefault(_stylists);
+var _about = require("./About");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+var _contact = require("./Contact");
+var _contactDefault = parcelHelpers.interopDefault(_contact);
 
-},{"./Home":"60R7n","./Links":"jDBjl","./Schedule":"cEzTn","./Appointments":"8RBT4","./Appointment":"aEKI8","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60R7n":[function(require,module,exports) {
+},{"./Home":"60R7n","./Links":"jDBjl","./Schedule":"cEzTn","./Appointments":"8RBT4","./Appointment":"aEKI8","./Services":"8mAuC","./Stylists":"8LZ1O","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./About":"3OUOl","./Contact":"hWwek"}],"60R7n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 exports.default = {
@@ -1389,6 +1470,22 @@ parcelHelpers.defineInteropFlag(exports);
 exports.default = {
     header: "Stylists",
     view: "Stylists"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3OUOl":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "About",
+    view: "About"
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hWwek":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    header: "Contact",
+    view: "Contact"
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuSlc":[function(require,module,exports) {

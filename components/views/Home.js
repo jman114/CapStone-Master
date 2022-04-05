@@ -38,55 +38,6 @@ export default st => html`
     </div>
    </div> 
 </div>
-  <!-- <section id="home">
-    <content class="responsive flex">
-      <div class="main-content">
-        <br />
-        <br />
-        <div class="row">
-          <div class="column">
-            <h2>Why Choose Us</h2>
-            <ul id="first-list">
-              <li>Music</li>
-              <li>Basketball</li>
-              <li>Learning New Things</li>
-              <li>Problem Solving</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h2>What We Do</h2>
-            <ol class="my-second-list">
-              <li>Being Wrong</li>
-              <li>Not Being Able To Figure Something Out</li>
-              <li>Unfinished</li>
-            </ol>
-          </div>
-          <div class="column">
-            <h2>Book With Us</h2>
-            <ol class="my-second-list">
-              <li>Being Wrong</li>
-              <li>Not Being Able To Figure Something Out</li>
-              <li>Unfinished</li>
-            </ol>
-          </div>
-        </div>
-        <p>
-          This is going to contain more information than you ever cared to know.
-        </p>
-        <div class="row">
-          <div class="column" style="background-color:#aaa;">
-            <h2>Column 1</h2>
-            <p>Some text..</p>
-          </div>
-          <div class="column" style="background-color:#bbb;">
-            <h2>Column 2</h2>
-            <p>Some text..</p>
-          </div>
-          <div class="column" style="background-color:#ccc;">
-            <h2>Column 3</h2>
-            <p>Some text..</p>
-          </div>
-        </div> -->
         <br /><br />
       </div>
     </content>
