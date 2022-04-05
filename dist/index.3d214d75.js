@@ -1348,7 +1348,9 @@ parcelHelpers.defineInteropFlag(exports);
 var _htmlLiteral = require("html-literal");
 var _htmlLiteralDefault = parcelHelpers.interopDefault(_htmlLiteral);
 exports.default = ()=>_htmlLiteralDefault.default`
-  <footer>&copy; 2022 <a href="/">In A Snip</a> | <a href="./About">About</a> | <a href="./Contact">Contact</a></footer>
+<div id="footer">
+  <footer>&copy; 2022 All Rights Reserved | <a href="/">In A Snip</a> | <a href="./About">About</a> | <a href="./Contact">Contact</a></footer>
+  </div>
 `
 ;
 
