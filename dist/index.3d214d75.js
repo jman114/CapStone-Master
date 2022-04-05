@@ -1333,10 +1333,10 @@ Phone Number: <br>
     <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555">
     <small>Format: 123-456-7890</small>
 </label>
-<label>
+<!-- <label>
 Your message:<br>
     <textarea type="text" name="Message" placeholder="Air Your Grievances"></textarea>
-  </label><br>
+  </label><br> -->
   <input type="submit" name="submit" value="submit"></input>
 </form>
 `
