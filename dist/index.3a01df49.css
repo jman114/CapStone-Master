@@ -44,7 +44,8 @@
 }
 
 .accordion__content {
-  background: #ffffff;
+  background: #0B4F6C;
+  font-color: #000;
   line-height: 1.6;
   font-size: 0.85em;
   display: none;
@@ -419,6 +420,7 @@ nav > ul > li {
 
 * p {
 padding-left: 10px;
+color:#fff;
 
 }
 
@@ -434,12 +436,12 @@ h2 {
 }
 
 h3 {
-  color:#000;
+  color:#fff;
   text-align:center;
 }
 
 h4 {
-  color:#000;
+  color:#fff;
   text-align:center;
 }
 
