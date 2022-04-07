@@ -976,7 +976,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
 </div>
   <div class="column">
   <div class="column-header">
-      <center><h3>Groom</h3></center>
+  <a href="/stylists"><center><h3>Groom</h3></center></a>
       <a href="/stylists"><img src="https://cdn-icons-png.flaticon.com/512/1057/1057470.png" alt="Grooming Tools" width="90%"></a>
     <div class="colum-content"> 
        <p>A licensed barber travels to your location and cuts your hair.</p>
@@ -985,7 +985,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
 </div>
   <div class="column">
   <div class="column-header">
-      <center><h3>Relax</h3></center>
+  <a href="/services"><center><h3>Relax</h3></center></a>
     <a href="/services"><img src="https://cdn-icons-png.flaticon.com/512/2798/2798223.png" alt="Relaxing Getting A Hair Cut" width="90%"></a>
     <div class="colum-content"> 
        <p>Sit back and relax! Professional service in your home, on your time.</p>
