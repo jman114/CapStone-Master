@@ -2,6 +2,25 @@
   background-color: #0B4F6C;
 } */
 
+.fc-daygrid-event {
+  pointer-events: none;
+  cursor: default;
+}
+
+.fc-daygrid-dot-event {
+  pointer-events: none;
+  cursor: default;
+}
+
+.fc-event {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* fc-event-start 
+fc-event-end 
+fc-event-past  */
+
 .accordion {
   /* max-width: 400px; */
   width: 80%;
