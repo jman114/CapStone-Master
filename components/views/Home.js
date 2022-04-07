@@ -12,7 +12,7 @@ export default st => html`
 <div class="row">
   <div class="column">
     <div class="column-header">
-      <center><h3>Book</h3></center>
+    <a href="/schedule"><center><h3>Book</h3></center></a>
       <a href="/schedule"><img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Book an appointment" width="90%"></a>
      <div class="colum-content"> 
        <p>Select the time and date you'd like your barber to arrive.</p>

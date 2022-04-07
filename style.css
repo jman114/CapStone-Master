@@ -45,7 +45,7 @@
 
 .accordion__content {
   background: #0B4F6C;
-  font-color: #000;
+  color: #000;
   line-height: 1.6;
   font-size: 0.85em;
   display: none;
@@ -384,14 +384,14 @@ nav > ul > li {
 
 #first-list {
   width: auto;
-  border-width: 5px 10px 5px 8px;
-  border-color: #496DDB;
+  border-width: 1px 2px 2px 1px;
+  border-color: #000;
   border-style: solid;
   border-radius: 0%;
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 100px;
-  background-color: #FCA311;
+  background-color: #B0123c;
   background-position:center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -400,7 +400,7 @@ nav > ul > li {
 
 
 #first-list > li {
-  color: #B0123c;
+  color: #000;
   font-weight: bold;
 }
 
@@ -420,7 +420,7 @@ nav > ul > li {
   font-weight:bold;
 }
 
-* p {
+p {
 padding-left: 10px;
 color:#fff;
 
