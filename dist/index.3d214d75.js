@@ -1422,12 +1422,12 @@ exports.default = [
         text: "Stylists"
     },
     {
-        title: "Appointments",
-        text: "Calendar"
-    },
-    {
         title: "Schedule",
         text: "Book Now"
+    },
+    {
+        title: "Appointments",
+        text: "Calendar"
     }, 
 ];
 
