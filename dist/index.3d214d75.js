@@ -1107,7 +1107,7 @@ exports.default = (st)=>_htmlLiteralDefault.default`
   </div>
   <div>
     <input type="checkbox" name="example_accordion" id="section4" class="accordion__input">
-    <label for="section3" class="accordion__label">In A Snip Barbers MANicure & Pedicure</label>
+    <label for="section4" class="accordion__label">In A Snip Barbers MANicure & Pedicure</label>
     <div class="accordion__content">
       <p>Doorbell Barbers MANicure & Pedicure $180</p>
       <p>
